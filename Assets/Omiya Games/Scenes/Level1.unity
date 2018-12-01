@@ -336,17 +336,17 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114936924004685594, guid: 873d985b771b5ad4d92bf58ce8f2618e,
+        type: 2}
+      propertyPath: m_MaxHeightElement
+      value: 
+      objectReference: {fileID: 1423548465}
     - target: {fileID: 114907157888053690, guid: 873d985b771b5ad4d92bf58ce8f2618e,
         type: 2}
       propertyPath: m_MaxHeightElement
       value: 
       objectReference: {fileID: 1423548465}
     - target: {fileID: 114441780336086294, guid: 873d985b771b5ad4d92bf58ce8f2618e,
-        type: 2}
-      propertyPath: m_MaxHeightElement
-      value: 
-      objectReference: {fileID: 1423548465}
-    - target: {fileID: 114936924004685594, guid: 873d985b771b5ad4d92bf58ce8f2618e,
         type: 2}
       propertyPath: m_MaxHeightElement
       value: 
@@ -849,11 +849,6 @@ Prefab:
     - target: {fileID: 22498224, guid: 409bd7de3a5b6374f8e82f4dc9494e4b, type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114523620558195494, guid: 409bd7de3a5b6374f8e82f4dc9494e4b,
-        type: 2}
-      propertyPath: resetDataButton.enabledFor
-      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 409bd7de3a5b6374f8e82f4dc9494e4b, type: 2}
