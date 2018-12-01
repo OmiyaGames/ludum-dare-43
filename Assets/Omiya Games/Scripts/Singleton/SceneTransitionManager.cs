@@ -56,6 +56,9 @@ namespace OmiyaGames.Scenes
         [Header("Scene Information")]
         // FIXME: remove the cursor properties from the inspector on this scene info
         [SerializeField]
+        Translations.TranslationDictionary dictionary;
+        // FIXME: remove the cursor properties from the inspector on this scene info
+        [SerializeField]
         SceneInfo splash;
         // FIXME: remove the cursor properties from the inspector on this scene info
         [SerializeField]
@@ -173,12 +176,12 @@ namespace OmiyaGames.Scenes
             get
             {
                 // Get the current scene
-                SceneInfo returnLevel = null, currenLevel = CurrentScene;
+                SceneInfo returnLevel = null, currentLevel = CurrentScene;
 
                 // Check which scene this is
-                if (currenLevel != null)
+                if (currentLevel != null)
                 {
-                    if ((currenLevel == splash) || (currenLevel == credits))
+                    if ((currentLevel == splash) || (currentLevel == credits))
                     {
                         // If we're on the splash or credits scene, the next level is the main menu
                         returnLevel = mainMenu;
@@ -189,15 +192,15 @@ namespace OmiyaGames.Scenes
                         returnLevel = credits;
 
                         // If there's more than one level, check if we're on the main menu or a level scene
-                        if (currenLevel == mainMenu)
+                        if (currentLevel == mainMenu)
                         {
                             // If we're the main scene, just return the first level
                             returnLevel = levels[0];
                         }
-                        else if ((currenLevel.Ordinal >= 0) && (currenLevel.Ordinal < (NumLevels - 1)))
+                        else if ((currentLevel.Ordinal >= 0) && (currentLevel.Ordinal < (NumLevels - 1)))
                         {
                             // If this is NOT the last level, return the next level
-                            returnLevel = levels[currenLevel.Ordinal + 1];
+                            returnLevel = levels[currentLevel.Ordinal + 1];
                         }
                     }
                 }
@@ -232,8 +235,11 @@ namespace OmiyaGames.Scenes
             sceneNameToInfo.Clear();
 
             // Add the main menu, credits, and splash scene
+            MainMenu.TranslationDictionary = dictionary;
             sceneNameToInfo.Add(MainMenu.ScenePath, MainMenu);
+            Credits.TranslationDictionary = dictionary;
             sceneNameToInfo.Add(Credits.ScenePath, Credits);
+            Splash.TranslationDictionary = dictionary;
             sceneNameToInfo.Add(Splash.ScenePath, Splash);
 
             // Update level information
@@ -243,6 +249,7 @@ namespace OmiyaGames.Scenes
                 Levels[index].Ordinal = index;
 
                 // Add the level to the dictionary
+                Levels[index].TranslationDictionary = dictionary;
                 sceneNameToInfo.Add(Levels[index].ScenePath, Levels[index]);
             }
         }
@@ -373,7 +380,7 @@ namespace OmiyaGames.Scenes
 
             // Load the next scene asynchronously
             // FIXME: once loading scene is in here, load that instead
-            sceneLoadingInfo = SceneManager.LoadSceneAsync(sceneToLoad.SceneFileName);
+            sceneLoadingInfo = SceneManager.LoadSceneAsync(sceneToLoad.ScenePath);
 
             // Prevent the scene from loading automatically
             sceneLoadingInfo.allowSceneActivation = false;

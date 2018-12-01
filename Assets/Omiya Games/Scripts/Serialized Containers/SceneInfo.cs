@@ -45,6 +45,8 @@ namespace OmiyaGames
         [SerializeField]
         string displayName = "";
         [SerializeField]
+        TranslationDictionary translationDictionary;
+        [SerializeField]
         CursorLockMode cursorMode = CursorLockMode.None;
         [SerializeField]
         [Tooltip("See TimeManager to set the scene's timescale.")]
@@ -80,7 +82,7 @@ namespace OmiyaGames
         {
             get
             {
-                if(reference.HasValue == false)
+                if (reference.HasValue == false)
                 {
                     reference = SceneManager.GetSceneByPath(ScenePath);
                 }
@@ -92,7 +94,7 @@ namespace OmiyaGames
         {
             get
             {
-                if(sceneName == null)
+                if (sceneName == null)
                 {
                     sceneName = System.IO.Path.GetFileNameWithoutExtension(ScenePath);
                 }
@@ -104,9 +106,10 @@ namespace OmiyaGames
         {
             get
             {
-                if(translatedDisplayName == null)
+                if (translatedDisplayName == null)
                 {
                     translatedDisplayName = new TranslatedString(displayName, (Ordinal + 1));
+                    translatedDisplayName.Dictionary = TranslationDictionary;
                 }
                 return translatedDisplayName;
             }
@@ -159,6 +162,23 @@ namespace OmiyaGames
             get
             {
                 return revertTimeScale;
+            }
+        }
+
+        public TranslationDictionary TranslationDictionary
+        {
+            get
+            {
+                return translationDictionary;
+            }
+
+            set
+            {
+                translationDictionary = value;
+                if (translatedDisplayName != null)
+                {
+                    translatedDisplayName.Dictionary = translationDictionary;
+                }
             }
         }
     }
