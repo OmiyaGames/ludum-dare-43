@@ -52,17 +52,17 @@ namespace UnityStandardAssets._2D
         public void Move(float move, bool crouch, bool jump)
         {
             // If crouching, check to see if the character can stand up
-            if (!crouch && m_Anim.GetBool("Crouch"))
-            {
-                // If the character has a ceiling preventing them from standing up, keep them crouching
-                if (Physics2D.OverlapCircle(m_CeilingCheck.position, k_CeilingRadius, m_WhatIsGround))
-                {
-                    crouch = true;
-                }
-            }
+            //if (!crouch && m_Anim.GetBool("Crouch"))
+            //{
+            //    // If the character has a ceiling preventing them from standing up, keep them crouching
+            //    if (Physics2D.OverlapCircle(m_CeilingCheck.position, k_CeilingRadius, m_WhatIsGround))
+            //    {
+            //        crouch = true;
+            //    }
+            //}
 
-            // Set whether or not the character is crouching in the animator
-            m_Anim.SetBool("Crouch", crouch);
+            //// Set whether or not the character is crouching in the animator
+            //m_Anim.SetBool("Crouch", crouch);
 
             //only control the player if grounded or airControl is turned on
             if (m_Grounded || m_AirControl)
@@ -89,14 +89,15 @@ namespace UnityStandardAssets._2D
                     Flip();
                 }
             }
+
             // If the player should jump...
-            if (m_Grounded && jump && m_Anim.GetBool("Ground"))
-            {
-                // Add a vertical force to the player.
-                m_Grounded = false;
-                m_Anim.SetBool("Ground", false);
-                m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
-            }
+            //if (m_Grounded && jump && m_Anim.GetBool("Ground"))
+            //{
+            //    // Add a vertical force to the player.
+            //    m_Grounded = false;
+            //    m_Anim.SetBool("Ground", false);
+            //    m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+            //}
         }
 
 
